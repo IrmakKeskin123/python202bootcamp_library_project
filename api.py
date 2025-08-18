@@ -70,7 +70,7 @@ class BookResponse(BaseModel):
     ses_süresi: Optional[int] = None
     odunc_alınmıs: Optional[bool] = None
 
-#Kullanıcıdan hangi  verinin alınacağı bilgisi
+#Kullanıcıdan hangi  verinin alınacağı bilgisi verilir
 class BookCreateRequest(BaseModel): 
     isbn: str
     kitap_turu: str
@@ -94,7 +94,7 @@ def health():
 
 
 
-#FAST API üzerinde liste kısmını oluşturu
+#FAST API üzerinde liste kısmını oluşturur
 @app.get("/books", response_model=list[BookResponse], status_code= HTTPStatusCodes.OK)
 def list_books():
     books= []
@@ -157,7 +157,7 @@ def add_book_endpoint(bookreq: BookCreateRequest):
 
 
 
-#Delete{isbn} (İSBN ile kitap bilgilerini FAST API'den siler
+#Delete{isbn} İSBN ile kitap bilgilerini FAST API'den siler
 @app.delete("/books/{isbn}", status_code=HTTPStatusCodes.NO_CONTENT)
 def delete_book(isbn:str, api_key: str = Depends(get_api_key)):
     kitap=kütüphane.find_book(isbn)
@@ -272,6 +272,7 @@ if __name__ == "__main__":
         reload=True,
         log_level="info"
     )
+
 
 
 
