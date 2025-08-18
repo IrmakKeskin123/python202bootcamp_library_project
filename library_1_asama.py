@@ -70,7 +70,7 @@ class Kütüphane:
                 print(f"Hata: Bu ISBN numarası ({kitap.isbn}) ile aynı türde kitap zaten var!")
                 return
 
-            # ISBN'nin sadece rakamlardaan oluştuğundan emin olunur
+            # ISBN'nin sadece rakamlardan oluştuğundan emin olunur
         if not kitap.isbn.isdigit():
             print("Hata: ISBN sadece rakamlardan oluşmalıdır!")
             return
@@ -150,4 +150,5 @@ class Kütüphane:
             raise e
 
                                     
+
 
