@@ -1,4 +1,4 @@
-
+#Menü kullanıcı girişi *Temsili
 
 
 kullanici_adi= input("Kullanıcı Adı:")
@@ -22,7 +22,7 @@ from book import e_kitap, sesli_kitap, fiziki_kitap
 
 def menu():
     kütüphane = Kütüphane()
-    
+    #Yapılacak işlem seçilir
     while True:
         print("  Kütüphane Menüsü  ")
         print("1. Kitap Ekle")
@@ -34,6 +34,7 @@ def menu():
         print("7. çıkış")
         secim= input("Seçim yapınız")
 
+#Eğer seçim kitap eklemek ise kitap adı,yazar adı, İSBN numarası, eklenecek kitap türü ve o türe göre özel gereksinimler girilir
         if secim=="1":
             print("Kitabı eklemek istediğiniz türü seçiniz")
             print("1. E-Kitap")
@@ -66,12 +67,12 @@ def menu():
                 
             else:
                 print("Hatalı Giriş Yaptınız!")
-        
+        #Eğer seçim kitap silmek ise İSBN numarası ile kütüphanedeki kitap silinir
         elif secim=="2":
             isbn = input("Silmek istediğiniz kitabın ISBN numarasını girin: ")
             kütüphane.remove_book(isbn)
             
-
+  #Eğer seçim kitapları listele ise kitaplar türlerine göre ayrı ayrı listelenir
         elif secim=="3":
             kitaplar = kütüphane.list_books()
             if not kitaplar:
@@ -91,7 +92,7 @@ def menu():
                 for kitap in kitaplar:
                     if isinstance(kitap, fiziki_kitap):
                         print(f"{kitap.kitap_adi} - {kitap.yazar} - ISBN: {kitap.isbn} - Sayfa Sayısı: {kitap.sayfa_sayisi}")
-
+#Eğer seçim kitap bul ise İSBN numarasına göre kitap bulunur
         elif secim=="4":
             isbn = input("Aramak istediğiniz kitabın ISBN numarasını girin: ")
             kitap = kütüphane.find_book(isbn)
@@ -104,7 +105,8 @@ def menu():
                     print(f"Bulundu: {kitap.kitap_adi} - {kitap.yazar} - {kitap.isbn} - Sayfa Sayısı: {kitap.sayfa_sayisi}")
             else:
                 print("Bu ISBN numarasına ait kitap bulunamadı.")
-
+#Eğer seçim kitap ödünç almak ise İSBN numarası girilen kitap ödünç alındı diye işaretlenir
+#Eğer kitap kütüphanede yoksa veya fiziksel kitap türünde değilse hata mesajı verir
         elif secim=="5":
             isbn = input("Ödünç almak istediğiniz fiziki kitabın ISBN numarasını girin: ")
             try:
@@ -113,7 +115,8 @@ def menu():
                 print(f"'{kitap.kitap_adi}' ödünç alındı.")
             except ValueError as e:
                 print("Hata:", e)
-
+#Eğer seçim kitap iade etmek ise İSBN numarası ile kitap iade edildi işaretlenir.
+#Eğer kitap kütüphanede ekli değilse veya zaten ödünç alınmamışsa hata mesajı döndürür
         elif secim=="6":
             isbn = input("İade etmek istediğiniz fiziki kitabın ISBN numarasını girin: ")
             try:
@@ -122,7 +125,7 @@ def menu():
                 print(f"'{kitap.kitap_adi}' iade edildi.")
             except ValueError as e:
                 print("Hata:", e)
-                
+        #Menüden çıkış yapılır        
         elif secim=="7":
             print("Çıkış Yapılıyor")
             break
@@ -132,6 +135,7 @@ def menu():
             
 
 menu()
+
 
 
 
