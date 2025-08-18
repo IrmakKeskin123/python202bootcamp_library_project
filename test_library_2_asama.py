@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
 
 from library_2_asama import Kütüphane
 from book import e_kitap, sesli_kitap, fiziki_kitap
@@ -11,8 +6,6 @@ import os
 import json
 import pytest
 
-
-# In[2]:
 
 
 DOSYA_ADI = "test_kutuphane.json"
@@ -25,14 +18,6 @@ class PydanticBook(BaseModel):
 
 
 
-# In[ ]:
-
-
-
-
-
-# In[5]:
-
 
 # Fixture: Testten önce temiz bir kütüphane oluşturmak için
 @pytest.fixture
@@ -42,9 +27,9 @@ def kutuphane():
     return Kütüphane(dosya_adi=DOSYA_ADI)
 
 
-# In[7]:
 
 
+#OPEN LİBRARY API'den kitap bilgisi çekmeyi test eder
 def test_get_ile_kitap_ekleme(kutuphane):
     isbn = "9789754700114"
     response = httpx.get("https://openlibrary.org/search.json",  params={"isbn": isbn})
@@ -64,7 +49,6 @@ def test_get_ile_kitap_ekleme(kutuphane):
     
 
 
-# In[8]:
 
 
 def test_isbn_sadece_rakam_kontrolu(kutuphane, capsys):
@@ -79,7 +63,6 @@ def test_isbn_sadece_rakam_kontrolu(kutuphane, capsys):
     assert "ISBN sadece rakamlardan oluşmalıdır" in captured.out  #ekrana yazılan çıktının okunması
 
 
-# In[22]:
 
 
 def test_gecerli_isbn_bulunamadı(kutuphane, capsys, monkeypatch):
@@ -87,22 +70,22 @@ def test_gecerli_isbn_bulunamadı(kutuphane, capsys, monkeypatch):
     monkeypatch.setattr('builtins.input', lambda _: '1')  # listedeki 1. kitap için örnek
 
     k = kutuphane
-    isbn = "0000000000000"  # API'de bulunmayan ISBN
+    isbn = "0000000000000"  # OPEN LİBRARY API'de bulunmayan ISBN örneğii
 
-    # Fiziki ve sesli kitap türleri için test
+
     k.add_book("sesli_kitap", isbn)
     k.add_book("fiziki_kitap", isbn)
 
     captured = capsys.readouterr()
 
-    # Mevcut davranışa uygun kontrol: "Kitap bulunamadı" yok, ama liste ve ekleme mesajı var
+    
     assert "Bulunan kitaplar:" in captured.out
     assert "kitaplığa eklendi" in captured.out
 
     print("✅ Geçerli ISBN ama bulunamadı testi geçti (mevcut davranışa uygun)")
 
 
-# In[10]:
+
 
 
 import httpx
@@ -117,17 +100,11 @@ def test_baglantı_hatası(kutuphane,monkeypatch, capsys):
     kutuphane.add_book("sesli_kitap", "9789750530333")
     captured = capsys.readouterr()
     assert "İstek hatası:" in captured.out 
-    print("İnternet yok test passed")
+    print("✅ İnternet yok test passed")
     
 
 
-# In[24]:
 
-
-get_ipython().system('jupyter nbconvert --to python test_library_2_asama.ipynb')
-
-
-# In[ ]:
 
 
 
