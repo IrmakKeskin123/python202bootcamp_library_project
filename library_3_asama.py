@@ -4,7 +4,7 @@ import json
 from book import Kitap, e_kitap, sesli_kitap, fiziki_kitap
 
 
-
+#FAST API oluşturuken oluşan gereksinimleri karşılamak için düzenlenmiştir
 
 
 OPEN_LIBRARY_URL="https://openlibrary.org/search.json"
@@ -156,6 +156,7 @@ class Kütüphane:
 
         kitap.odunc_alınmıs= False
         self.save_books()
+
 
 
 
