@@ -16,6 +16,7 @@ client = TestClient(app)
 def api_key_header():
     return {"X-API-KEY": API_KEY}
 
+#Her test sonrası test için kullanılan test_kutuphane.json dosyasını temizler
 @pytest.fixture(autouse=True)
 def clean_up_json_file():
     
@@ -187,3 +188,4 @@ def test_ödünc_alınmamıs_kitabi_iade(api_key_header, monkeypatch):
     response = client.patch(f"/books/{test_isbn}/return", headers=api_key_header)
     assert response.status_code == status.HTTP_400_BAD_REQUEST
     assert "Bu kitap zaten kütüphanede" in response.json()["detail"]
+
