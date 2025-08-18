@@ -4,7 +4,7 @@ import json
 from book import Kitap, e_kitap, sesli_kitap, fiziki_kitap
 
 
-# In[13]:
+
 
 
 OPEN_LIBRARY_URL="https://openlibrary.org/search.json"
@@ -62,7 +62,7 @@ class Kütüphane:
         return veri
 
     def add_book(self,kitap_turu, isbn): 
-        parametre = {"isbn": isbn} #API'ye GET parametresi olarak İSBN gönderlmesini sağlar
+        parametre = {"isbn": isbn} #OPEN LİBRARY API'ye GET parametresi olarak İSBN gönderlmesini sağlar
         
         # ISBN'nin sadece rakamlardaan oluştuğundan emin olunur
         if not isbn.isdigit():
@@ -99,7 +99,7 @@ class Kütüphane:
 
          # Kullanıcıya seçenekleri göster 
         print("Bulunan kitaplar:")
-        for i, kitap_info in enumerate(docs[:10], 1):  #sadece ilk 10 kitabı gösteriyor
+        for i, kitap_info in enumerate(docs[:10], 1):  #sadece ilk 10 kitabı gösterir
             kitap_adi = kitap_info.get("title")
             yazar = kitap_info.get("author_name", ["Bilinmiyor"])[0]
             yil = kitap_info.get("first_publish_year", "Yıl yok")
@@ -107,7 +107,7 @@ class Kütüphane:
 
         secim = input("Eklemek istediğiniz kitabın sıra numarasını girin: ")
         try:
-            secim = int(secim) - 1
+            secim = int(secim) - 1   
             if 0 <= secim < len(docs[:10]):
                 secilen = docs[secim]
         except (ValueError, IndexError):
@@ -118,7 +118,7 @@ class Kütüphane:
         yazar = secilen.get("author_name", ["Bilinmiyor"])[0]
             
         kitap= None
-        #Kitabın türüne göre sayfa sayısı, dosya formatı ve ses süresi bilgilerini otomatik alıyor 
+        #Kitabın türüne göre sayfa sayısı, dosya formatı ve ses süresi bilgilerini manuel alıyor 
         if kitap_turu == "fiziki_kitap":
             sayfa_sayisi = input("Sayfa sayısını girin: ")
             kitap = fiziki_kitap(kitap_adi, yazar, isbn, int(sayfa_sayisi))
@@ -137,12 +137,12 @@ class Kütüphane:
         self.save_books()
         print(f"{kitap.kitap_adi} kitaplığa eklendi.")
         
-    def remove_book(self,isbn): #kitapları siler
+    def remove_book(self,isbn): 
         eslesen_kitaplar = [k for k in self._kitaplar if k.isbn == isbn]
         if not eslesen_kitaplar:
             print("Bu ISBN numarasına ait kitap bulunamadı.")
             return
-      
+       #Aynı İSBN numaralı birden fazla türde kitaap var mı kontrol eder, varsa hangisini silmek istediğinizi sorar
         if len(eslesen_kitaplar) == 1:
             self._kitaplar.remove(eslesen_kitaplar[0])
             print("Kitap silindi.")
@@ -157,12 +157,14 @@ class Kütüphane:
                 secilen_kitap = eslesen_kitaplar[secim_index]
                 self._kitaplar.remove(secilen_kitap)
                 print(f"{type(secilen_kitap).__name__} türündeki kitap silindi.")
-            except (ValueError, IndexError): #Sayı yerine harf girilirse veya listede olmayan bir İSBN girilirse hata mesajı verir
+           
+            #Sayı yerine harf girilirse veya listede olmayan bir İSBN girilirse hata mesajı verir
+            except (ValueError, IndexError): 
                 print("Geçersiz seçim, silme işlemi iptal edildi.")
                 return
         self.save_books()
 
-    def list_books(self): #tüm kitapları listeler
+    def list_books(self):
         return self._kitaplar
 
     def find_book(self, isbn,kitap_turu=None):
@@ -178,7 +180,6 @@ class Kütüphane:
                 return kitap
         return None
 
-    #İSBN numarası ile ödünç alınacak kitabı arar 
     def odunc_al(self, isbn):
         kitap = self.find_book(isbn)
         if not kitap:
@@ -187,7 +188,6 @@ class Kütüphane:
         if not isinstance(kitap, fiziki_kitap):
             raise ValueError("Sadece fiziki kitaplar ödünç alınabilir")
 
-        #Kitabın ödünç alınma durumunun kontrolü
         if kitap.odunc_alınmıs:
             raise ValueError("Bu kitap zaten ödünç alınmış")
 
@@ -195,7 +195,6 @@ class Kütüphane:
         self.save_books()
 
 
-     #İSBN numarassına göre iade işlemini yapar
     def iade_et(self, isbn):
         kitap = self.find_book(isbn)
         if not kitap:
@@ -205,6 +204,7 @@ class Kütüphane:
 
         kitap.odunc_alınmıs= False
         self.save_books()
+
 
 
 
