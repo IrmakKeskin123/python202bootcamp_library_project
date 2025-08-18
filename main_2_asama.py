@@ -1,7 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
 
 
 kullanici_adi= input("Kullanıcı Adı:")
@@ -13,14 +9,14 @@ else:
     exit()     
 
 
-# In[1]:
+
 
 
 from library_2_asama import Kütüphane
 from book import e_kitap, sesli_kitap, fiziki_kitap
 
 
-# In[2]:
+
 
 
 def menu():
@@ -37,6 +33,9 @@ def menu():
         print("7. çıkış")
         secim= input("Seçim yapınız")
 
+
+ #Kitap ekleme istendiğinde kitabın İSBN bilgisi türü ve türüne uygun özel bilgileri manuel alır
+#İSBN numarasına göre kitap adı ve yazar bilgilerini OPEN LİBRARY API'den çeker
         if secim=="1":
             print("Kitabı eklemek istediğiniz türü seçiniz")
             print("1. E-Kitap")
@@ -128,13 +127,8 @@ def menu():
 menu()
 
 
-# In[ ]:
 
 
-get_ipython().system('jupyter nbconvert --to python main_1_asama.ipynb')
-
-
-# In[ ]:
 
 
 
