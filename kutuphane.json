@@ -1,0 +1,32 @@
+[
+    {
+        "kitap_adi": "Harry Potter and the Philosopher's Stone",
+        "yazar": "J. K. Rowling",
+        "isbn": "9781408855652",
+        "tur": "e_kitap",
+        "dosya_formati": "PDF"
+    },
+    {
+        "kitap_adi": "The Hobbit",
+        "yazar": "J.R.R. Tolkien",
+        "isbn": "9780547928227",
+        "tur": "fiziki_kitap",
+        "sayfa_sayisi": 1216,
+        "odunc_alınmıs": false
+    },
+    {
+        "kitap_adi": "Nineteen Eighty-Four",
+        "yazar": "George Orwell",
+        "isbn": "9780451524935",
+        "tur": "fiziki_kitap",
+        "sayfa_sayisi": 326,
+        "odunc_alınmıs": false
+    },
+    {
+        "kitap_adi": "Harry Potter and the Deathly Hallows",
+        "yazar": "J. K. Rowling",
+        "isbn": "9781408855713",
+        "tur": "sesli_kitap",
+        "ses_süresi": 113400
+    }
+]
