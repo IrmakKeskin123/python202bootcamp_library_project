@@ -31,7 +31,7 @@ class HTTPStatusCodes(IntEnum):
 
 
 
-
+#FAST API için security kısmını oluşturur
 API_KEY= "SECRET_API_KEY_12345"
 API_KEY_NAME= "X-API-KEY"
 api_key_header= APIKeyHeader(name=API_KEY_NAME, auto_error=False)
@@ -70,7 +70,7 @@ class BookResponse(BaseModel):
     ses_süresi: Optional[int] = None
     odunc_alınmıs: Optional[bool] = None
 
-#Kullanıcıdan hangi  verinin alınacağı bilgis
+#Kullanıcıdan hangi  verinin alınacağı bilgisi
 class BookCreateRequest(BaseModel): 
     isbn: str
     kitap_turu: str
@@ -94,7 +94,7 @@ def health():
 
 
 
-
+#FAST API üzerinde liste kısmını oluşturu
 @app.get("/books", response_model=list[BookResponse], status_code= HTTPStatusCodes.OK)
 def list_books():
     books= []
@@ -119,6 +119,7 @@ def list_books():
 
 
 #Post (Yeni veri oluşturur)
+#Yeni kitap eklenme kısmıdır
 @app.post("/books", response_model=BookResponse, status_code= HTTPStatusCodes.CREATED)
 def add_book_endpoint(bookreq: BookCreateRequest):
     for kitap in kütüphane.list_books():
@@ -156,7 +157,7 @@ def add_book_endpoint(bookreq: BookCreateRequest):
 
 
 
-#Delete{isbn} (İSBN ile veriyi siler
+#Delete{isbn} (İSBN ile kitap bilgilerini FAST API'den siler
 @app.delete("/books/{isbn}", status_code=HTTPStatusCodes.NO_CONTENT)
 def delete_book(isbn:str, api_key: str = Depends(get_api_key)):
     kitap=kütüphane.find_book(isbn)
@@ -271,6 +272,7 @@ if __name__ == "__main__":
         reload=True,
         log_level="info"
     )
+
 
 
 
