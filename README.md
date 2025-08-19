@@ -1,10 +1,10 @@
-Kütüphane Yönetim Sistemi
+#Kütüphane Yönetim Sistemi
 
 
 Bu proje, Python'da Nesne Yönelimli Programlama (OOP), harici bir API entegrasyonu ve FastAPI kullanarak geliştirilmiş üç aşamalı bir kütüphane yönetim sistemidir. Uygulama, hem komut satırı hem de web API'si üzerinden kitapları yönetmenizi sağlar.
 
 
-Proje Aşamaları:
+#Proje Aşamaları:
 
 
 1.Türüne göre (e-kitap, sesli kitap, fiziksel kitap) ekleme, silme (İSBN numarası ile), listeleme, arama (İSBN), ödünç alma ve iade (fiziksel kitaplara özgü) işlemlerini komut satısı üzerinden yapma imkanı verir.
@@ -16,7 +16,7 @@ Proje Aşamaları:
 3.Proje FAST API ile zenginleştirilerek önceki aşamalarda komut satırı üzerinden yapılan işlemler web arayüzünde yapılır hale getirilmiştir.
 
 
-FAST API Kurulumu
+#FAST API Kurulumu
 
 
 Repoyu link ile klonlayabilirsiniz: https://github.com/IrmakKeskin123/python202bootcamp_library_project.git
@@ -27,27 +27,31 @@ Proje gereksinimleri için pip install -r requirements.txt komutunu kullanın.
 
 FAST API için terminalde uvicorn api:app --reload komutu ile başlattıktan sonra tarayıcıdan http://127.0.0.1:8000/docs adresine giriş yapılmalıdır.
 
-API Dokümantasyonu
+#API Dokümantasyonu
 Authorize kısmına SECRET_API_KEY_12345 anahtarı ile giriş yapılır.
 
-Endpoint'ler
+#Endpoint'ler
+
+
 <img width="912" height="463" alt="Ekran görüntüsü 2025-08-18 220847" src="https://github.com/user-attachments/assets/9842e0f9-98f5-46af-86a2-f499155eea43" />
 
-GET /
+#GET /
 API'nin durumunu kontrol eder.
 
 
 
 {
 
-  "message": "FastAPI Library Manegement System"
+    "message": "FastAPI Library Manegement System"
   
 }
 
 
 
-GET /books
+#GET /books
 Kütüphanedeki tüm kitapların listesini döndürür.
+
+
 
 <img width="877" height="380" alt="Ekran görüntüsü 2025-08-18 220917" src="https://github.com/user-attachments/assets/f595fecd-fdfa-4d79-a28f-f55b309afb7a" />
 
@@ -56,20 +60,13 @@ Kütüphanedeki tüm kitapların listesini döndürür.
 
   {
   
-    "kitap_adi": "Harry Potter and the Philosopher's Stone",
-    
-    "yazar": "J. K. Rowling",
-    
-    "isbn": "9781408855652",
-    
+    "kitap_adi": "Harry Potter and the Philosopher's Stone", 
+    "yazar": "J. K. Rowling",  
+    "isbn": "9781408855652", 
     "kitap_turu": "e_kitap",
-    
     "sayfa_sayisi": null,
-    
     "dosya_formati": "PDF",
-    
     "ses_süresi": null,
-    
     "odunc_alınmıs": null
     
   }
@@ -77,17 +74,15 @@ Kütüphanedeki tüm kitapların listesini döndürür.
 ]
 
 
-POST /books
+#POST /books
 Verilen ISBN numarasıyla Open Library API'den kitap bilgilerini çeker ve kütüphaneye ekler.
 
 
 {
-
-  "isbn": "9780451524935",
-  
-  "kitap_turu": "fiziki_kitap",
-  
-  "sayfa_sayisi": 326
+ 
+     "isbn": "9780451524935"
+     "kitap_turu": "fiziki_kitap",  
+     "sayfa_sayisi": 326
   
 }
 
@@ -101,19 +96,14 @@ PATCH /books/{isbn}/borrow
 ISBN numarası verilmiş fiziki kitabı ödünç alınmış olarak işaretler.
 
 
+ {
 
-{
+     "kitap_adi": "Nineteen Eighty-Four",
+     "yazar": "George Orwell",
+      "isbn": "9780451524935",
+      "sayfa_sayisi": 326,
+      "odunc_alinmis": true
 
-  "kitap_adi": "Nineteen Eighty-Four",
-  
-  "yazar": "George Orwell",
-  
-  "isbn": "9780451524935",
-  
-  "sayfa_sayisi": 326,
-  
-  "odunc_alinmis": true
-  
 }
 
 
@@ -124,15 +114,11 @@ PATCH /books/{isbn}/return
 
 
 {
-
-  "kitap_adi": "Nineteen Eighty-Four",
-  
-  "yazar": "George Orwell",
-  
-  "isbn": "9780451524935",
-  
-  "sayfa_sayisi": 326,
-  
-  "odunc_alinmis": false
+       
+    "kitap_adi": "Nineteen Eighty-Four",  
+    "yazar": "George Orwell",
+    "isbn": "9780451524935",
+    "sayfa_sayisi": 326,
+    "odunc_alinmis": false
   
 }
