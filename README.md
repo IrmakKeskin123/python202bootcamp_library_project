@@ -1,15 +1,26 @@
 Kütüphane Yönetim Sistemi
+
+
 Bu proje, Python'da Nesne Yönelimli Programlama (OOP), harici bir API entegrasyonu ve FastAPI kullanarak geliştirilmiş üç aşamalı bir kütüphane yönetim sistemidir. Uygulama, hem komut satırı hem de web API'si üzerinden kitapları yönetmenizi sağlar.
 
-Proje Aşamaları
-Türüne göre (e-kitap, sesli kitap, fiziksel kitap) ekleme, silme (İSBN numarası ile), listeleme, arama (İSBN), ödünç alma ve iade (fiziksel kitaplara özgü) işlemlerini komut satısı üzerinden yapma imkanı verir.
 
-Kitap ekleme kısmı harici bir API (OPEN LIBRARY API) ile zenginleştirilerek, kullanıcıdan sadece kitabın İSBN numarasını manuel olarak alır. Kitap adı, yazar ve basım tarihi bilgisini API üzerinden çekerek basım tarihlerine göre en yeniden en eskiye doğru en fazla 10 kitap olacak şekilde listeler ve kullanıcıdan sıralanan kitaplardan birini seçmesi istenir.
+Proje Aşamaları:
 
-Proje FAST API ile zenginleştirilerek önceki aşamalarda komut satırı üzerinden yapılan işlemler web arayüzünde yapılır hale getirilmiştir.
+
+1.Türüne göre (e-kitap, sesli kitap, fiziksel kitap) ekleme, silme (İSBN numarası ile), listeleme, arama (İSBN), ödünç alma ve iade (fiziksel kitaplara özgü) işlemlerini komut satısı üzerinden yapma imkanı verir.
+
+
+2.Kitap ekleme kısmı harici bir API (OPEN LIBRARY API) ile zenginleştirilerek, kullanıcıdan sadece kitabın İSBN numarasını manuel olarak alır. Kitap adı, yazar ve basım tarihi bilgisini API üzerinden çekerek basım tarihlerine göre en yeniden en eskiye doğru en fazla 10 kitap olacak şekilde listeler ve kullanıcıdan sıralanan kitaplardan birini seçmesi istenir.
+
+
+3.Proje FAST API ile zenginleştirilerek önceki aşamalarda komut satırı üzerinden yapılan işlemler web arayüzünde yapılır hale getirilmiştir.
+
 
 FAST API Kurulumu
-Repoyu link ile klonlayabilirsiniz.
+
+
+Repoyu link ile klonlayabilirsiniz: https://github.com/IrmakKeskin123/python202bootcamp_library_project.git
+
 Proje gereksinimleri için pip install -r requirements.txt komutunu kullanın.
 
 1 ve 2. aşama main_1_asama.py ve main_2_asama.py adlı dosyaların komut satırları ile çalıştırılabilir.
@@ -23,12 +34,18 @@ Endpoint'ler
 GET /
 API'nin durumunu kontrol eder.
 
+
+
 {
   "message": "FastAPI Library Manegement System"
 }
 
+
+
 GET /books
 Kütüphanedeki tüm kitapların listesini döndürür.
+
+
 
 [
   {
@@ -43,8 +60,10 @@ Kütüphanedeki tüm kitapların listesini döndürür.
   }
 ]
 
+
 POST /books
 Verilen ISBN numarasıyla Open Library API'den kitap bilgilerini çeker ve kütüphaneye ekler.
+
 
 {
   "isbn": "9780451524935",
@@ -52,11 +71,16 @@ Verilen ISBN numarasıyla Open Library API'den kitap bilgilerini çeker ve küt�
   "sayfa_sayisi": 326
 }
 
+
+
 DELETE /books/{isbn}
 Belirtilen ISBN numarasına sahip kitabı kütüphaneden siler. Başarılı olursa 204 No Content döndürür.
 
+
 PATCH /books/{isbn}/borrow
 ISBN numarası verilmiş fiziki kitabı ödünç alınmış olarak işaretler.
+
+
 
 {
   "kitap_adi": "Nineteen Eighty-Four",
@@ -66,8 +90,12 @@ ISBN numarası verilmiş fiziki kitabı ödünç alınmış olarak işaretler.
   "odunc_alinmis": true
 }
 
+
+
 PATCH /books/{isbn}/return
 Ödünç alınan bir fiziki kitabı ISBN numarası ile iade edilmiş olarak işaretler.
+
+
 
 {
   "kitap_adi": "Nineteen Eighty-Four",
