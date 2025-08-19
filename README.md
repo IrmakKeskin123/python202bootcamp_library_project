@@ -88,11 +88,11 @@ Verilen ISBN numarasıyla Open Library API'den kitap bilgilerini çeker ve küt�
 
 
 
-DELETE /books/{isbn}
+#DELETE /books/{isbn}
 Belirtilen ISBN numarasına sahip kitabı kütüphaneden siler. Başarılı olursa 204 No Content döndürür.
 
 
-PATCH /books/{isbn}/borrow
+#PATCH /books/{isbn}/borrow
 ISBN numarası verilmiş fiziki kitabı ödünç alınmış olarak işaretler.
 
 
@@ -108,7 +108,7 @@ ISBN numarası verilmiş fiziki kitabı ödünç alınmış olarak işaretler.
 
 
 
-PATCH /books/{isbn}/return
+#PATCH /books/{isbn}/return
 Ödünç alınan bir fiziki kitabı ISBN numarası ile iade edilmiş olarak işaretler.
 
 
