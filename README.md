@@ -1,11 +1,8 @@
-#Kütüphane Yönetim Sistemi
+<h1 style="font-family: 'Handlee', cursive; font-weight: normal; font-size: 2.5em;">Kütüphane Yönetim Sistemi</h1>
+<p style="font-family: 'Handlee', cursive; font-size: 1.1em;">Bu proje, Python'da Nesne Yönelimli Programlama (OOP), harici bir API entegrasyonu ve FastAPI kullanarak geliştirilmiş üç aşamalı bir kütüphane yönetim sistemidir. Uygulama, hem komut satırı hem de web API'si üzerinden kitapları yönetmenizi sağlar.
 
 
-Bu proje, Python'da Nesne Yönelimli Programlama (OOP), harici bir API entegrasyonu ve FastAPI kullanarak geliştirilmiş üç aşamalı bir kütüphane yönetim sistemidir. Uygulama, hem komut satırı hem de web API'si üzerinden kitapları yönetmenizi sağlar.
-
-
-#Proje Aşamaları:
-
+<h2 style="font-family: 'Handlee', cursive; font-weight: normal; font-size: 2em;">Proje Aşamaları</h2>
 
 1.Türüne göre (e-kitap, sesli kitap, fiziksel kitap) ekleme, silme (İSBN numarası ile), listeleme, arama (İSBN), ödünç alma ve iade (fiziksel kitaplara özgü) işlemlerini komut satısı üzerinden yapma imkanı verir.
 
@@ -16,7 +13,7 @@ Bu proje, Python'da Nesne Yönelimli Programlama (OOP), harici bir API entegrasy
 3.Proje FAST API ile zenginleştirilerek önceki aşamalarda komut satırı üzerinden yapılan işlemler web arayüzünde yapılır hale getirilmiştir.
 
 
-#FAST API Kurulumu
+<h2 style="font-family: 'Handlee', cursive; font-weight: normal; font-size: 2em;">FAST API Kurulumu</h2>
 
 
 Repoyu link ile klonlayabilirsiniz: https://github.com/IrmakKeskin123/python202bootcamp_library_project.git
@@ -27,15 +24,15 @@ Proje gereksinimleri için pip install -r requirements.txt komutunu kullanın.
 
 FAST API için terminalde uvicorn api:app --reload komutu ile başlattıktan sonra tarayıcıdan http://127.0.0.1:8000/docs adresine giriş yapılmalıdır.
 
-#API Dokümantasyonu
+<h2 style="font-family: 'Handlee', cursive; font-weight: normal; font-size: 2em;">API Dokümantasyonu</h2>
 Authorize kısmına SECRET_API_KEY_12345 anahtarı ile giriş yapılır.
-
-#Endpoint'ler
+<h2 style="font-family: 'Handlee', cursive; font-weight: normal; font-size: 2em;">Endpoint'ler</h2>
 
 
 <img width="912" height="463" alt="Ekran görüntüsü 2025-08-18 220847" src="https://github.com/user-attachments/assets/9842e0f9-98f5-46af-86a2-f499155eea43" />
 
-#GET /
+
+<h3 style="font-family: 'Handlee', cursive; font-weight: normal;">GET /</h3>
 API'nin durumunu kontrol eder.
 
 
@@ -48,7 +45,7 @@ API'nin durumunu kontrol eder.
 
 
 
-#GET /books
+<h3 style="font-family: 'Handlee', cursive; font-weight: normal;">GET /books</h3>
 Kütüphanedeki tüm kitapların listesini döndürür.
 
 
@@ -74,7 +71,7 @@ Kütüphanedeki tüm kitapların listesini döndürür.
 ]
 
 
-#POST /books
+<h3 style="font-family: 'Handlee', cursive; font-weight: normal;">POST /books</h3>
 Verilen ISBN numarasıyla Open Library API'den kitap bilgilerini çeker ve kütüphaneye ekler.
 
 
@@ -88,11 +85,10 @@ Verilen ISBN numarasıyla Open Library API'den kitap bilgilerini çeker ve küt�
 
 
 
-#DELETE /books/{isbn}
+<h3 style="font-family: 'Handlee', cursive; font-weight: normal;">DELETE /books/{isbn}</h3>
 Belirtilen ISBN numarasına sahip kitabı kütüphaneden siler. Başarılı olursa 204 No Content döndürür.
 
-
-#PATCH /books/{isbn}/borrow
+<h3 style="font-family: 'Handlee', cursive; font-weight: normal;">PATCH /books/{isbn}/borrow</h3>
 ISBN numarası verilmiş fiziki kitabı ödünç alınmış olarak işaretler.
 
 
@@ -108,7 +104,7 @@ ISBN numarası verilmiş fiziki kitabı ödünç alınmış olarak işaretler.
 
 
 
-#PATCH /books/{isbn}/return
+<h3 style="font-family: 'Handlee', cursive; font-weight: normal;">PATCH /books/{isbn}/return</h3>
 Ödünç alınan bir fiziki kitabı ISBN numarası ile iade edilmiş olarak işaretler.
 
 
