@@ -31,13 +31,17 @@ API Dokümantasyonu
 Authorize kısmına SECRET_API_KEY_12345 anahtarı ile giriş yapılır.
 
 Endpoint'ler
+<img width="912" height="463" alt="Ekran görüntüsü 2025-08-18 220847" src="https://github.com/user-attachments/assets/9842e0f9-98f5-46af-86a2-f499155eea43" />
+
 GET /
 API'nin durumunu kontrol eder.
 
 
 
 {
+
   "message": "FastAPI Library Manegement System"
+  
 }
 
 
@@ -45,19 +49,31 @@ API'nin durumunu kontrol eder.
 GET /books
 Kütüphanedeki tüm kitapların listesini döndürür.
 
+<img width="877" height="380" alt="Ekran görüntüsü 2025-08-18 220917" src="https://github.com/user-attachments/assets/f595fecd-fdfa-4d79-a28f-f55b309afb7a" />
 
 
 [
+
   {
+  
     "kitap_adi": "Harry Potter and the Philosopher's Stone",
+    
     "yazar": "J. K. Rowling",
+    
     "isbn": "9781408855652",
+    
     "kitap_turu": "e_kitap",
+    
     "sayfa_sayisi": null,
+    
     "dosya_formati": "PDF",
+    
     "ses_süresi": null,
+    
     "odunc_alınmıs": null
+    
   }
+  
 ]
 
 
@@ -66,9 +82,13 @@ Verilen ISBN numarasıyla Open Library API'den kitap bilgilerini çeker ve küt�
 
 
 {
+
   "isbn": "9780451524935",
+  
   "kitap_turu": "fiziki_kitap",
+  
   "sayfa_sayisi": 326
+  
 }
 
 
@@ -83,11 +103,17 @@ ISBN numarası verilmiş fiziki kitabı ödünç alınmış olarak işaretler.
 
 
 {
+
   "kitap_adi": "Nineteen Eighty-Four",
+  
   "yazar": "George Orwell",
+  
   "isbn": "9780451524935",
+  
   "sayfa_sayisi": 326,
+  
   "odunc_alinmis": true
+  
 }
 
 
@@ -98,9 +124,15 @@ PATCH /books/{isbn}/return
 
 
 {
+
   "kitap_adi": "Nineteen Eighty-Four",
+  
   "yazar": "George Orwell",
+  
   "isbn": "9780451524935",
+  
   "sayfa_sayisi": 326,
+  
   "odunc_alinmis": false
+  
 }
